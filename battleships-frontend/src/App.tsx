@@ -2,14 +2,16 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import PlayerList from "./components/PlayerList";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <NavBar />
-      <p>Battleships</p>
-      <PlayerList />
+      <div className="container-fluid">
+        <p>Battleships</p>
+        <PlayerList />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

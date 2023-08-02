@@ -3,7 +3,7 @@ import { getPlayers } from "../services/apiServices";
 
 interface Player {
   id: string;
-  displayName: string;
+  name: string;
 }
 
 const PlayerList: React.FC = () => {
@@ -19,14 +19,18 @@ const PlayerList: React.FC = () => {
   }, []);
 
   return (
-    <ul>
-      {players.map((player) => (
-        <li key={player.id}>
-          {player.displayName}
-          {player.id}
-        </li>
-      ))}
-    </ul>
+    <div className="row">
+      <div className="col-2 offset-10">
+        {players.map((player) => (
+          <div className="card m-2" style={{ width: "18rem" }} key={player.id}>
+            <div className="card-body">
+              <h5 className="card-title">{player.name}</h5>
+              <p className="card-text text-muted">{player.id}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
