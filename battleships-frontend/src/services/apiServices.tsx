@@ -34,7 +34,17 @@ export const addPlayer = async (name: string) => {
 
 //Games
 
-export const createGame = async (playerId: string) => {
+export const fetchGames = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/Game`);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch games", error);
+    throw error;
+  }
+};
+
+export const addGame = async (playerId: string) => {
   try {
     const response = await axios.post(
       `${API_URL}/Game`,
@@ -47,7 +57,7 @@ export const createGame = async (playerId: string) => {
     );
     return response.data;
   } catch (error) {
-    console.error("Error creating game", error);
+    console.error("Failed to create game", error);
     throw error;
   }
 };
