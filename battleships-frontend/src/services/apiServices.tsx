@@ -11,3 +11,21 @@ export const getPlayers = async () => {
     throw error;
   }
 };
+
+export const addPlayer = async (name: string) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/Player`,
+      JSON.stringify(name),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to add player", error);
+    throw error;
+  }
+};

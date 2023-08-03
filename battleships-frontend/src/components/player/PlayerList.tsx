@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getPlayers } from "../services/apiServices";
-import { useAuth } from "../contexts/AuthContext";
+import { getPlayers } from "../../services/apiServices";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface Player {
   id: string;
