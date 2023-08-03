@@ -35,22 +35,22 @@ const NavBar: React.FC = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link disabled" aria-current="page" href="#">
+              <a className="nav-link disabled" aria-current="page" href="#!">
                 Home
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">
+              <a className="nav-link disabled" href="#!">
                 Create Game
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#">
+              <a className="nav-link disabled" href="#!">
                 My Games
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">
+              <a className="nav-link disabled" aria-disabled="true" href="#!">
                 Login/Logout
               </a>
             </li>
