@@ -1,7 +1,8 @@
 import React from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import NavBar from "./components/NavBar";
-import PlayerList from "./components/PlayerList";
+import AddPlayer from "./components/player/AddPlayer";
+import PlayerList from "./components/player/PlayerList";
 
 const App: React.FC = () => {
   return (
@@ -9,6 +10,7 @@ const App: React.FC = () => {
       <div className="App">
         <NavBar />
         <p>Battleships</p>
+        <AddPlayer />
         <PlayerList />
       </div>
     </AuthProvider>
