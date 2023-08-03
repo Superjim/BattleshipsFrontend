@@ -11,6 +11,7 @@ interface Player {
 const PlayerList: React.FC = () => {
   const [players, setPlayers] = useState<Player[]>([]);
   const { selectPlayer, id: selectedPlayerId } = useAuth();
+  const [playerUpdate, setPlayerUpdate] = useState(0);
 
   useEffect(() => {
     const fetchPlayers = async () => {
@@ -19,15 +20,19 @@ const PlayerList: React.FC = () => {
     };
 
     fetchPlayers();
-  }, []);
+  }, [playerUpdate]);
 
   const handlePlayerClick = (name: string, id: string) => {
     selectPlayer(name, id);
   };
 
+  const handlePlayerAdded = () => {
+    setPlayerUpdate(playerUpdate + 1);
+  };
+
   return (
     <div className="col-2">
-      <AddPlayer />
+      <AddPlayer onPlayerAdded={handlePlayerAdded} />
       {players.map((player) => (
         <div
           className={`card m-2 ${
