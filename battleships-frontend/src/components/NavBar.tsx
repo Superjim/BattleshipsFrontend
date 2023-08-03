@@ -10,11 +10,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg bg-body-tertiary ${
-        navExpanded ? "show" : ""
-      }`}
-    >
+    <nav className={`navbar navbar-expand-lg ${navExpanded ? "show" : ""}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="https://jim-battleships.netlify.app/">
           Battleships
