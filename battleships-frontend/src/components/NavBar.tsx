@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
+  const { name } = useAuth();
 
   const handleToggle = () => {
     setNavExpanded(!navExpanded);
@@ -50,8 +52,13 @@ const NavBar: React.FC = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true" href="#!">
-                Login/Logout
+              <a
+                className="nav-link disabled"
+                aria-disabled="true"
+                href="#!"
+                style={{ fontWeight: "bold", color: "black" }}
+              >
+                {name}
               </a>
             </li>
           </ul>
