@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import CreateGame from "./game/createGame";
+import CreateGame from "./game/CreateGame";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
