@@ -2,6 +2,8 @@ import axios from "axios";
 
 const API_URL = "https://battleshipsbackend.azurewebsites.net/api";
 
+//Players
+
 export const getPlayers = async () => {
   try {
     const response = await axios.get(`${API_URL}/Player`);
@@ -26,6 +28,26 @@ export const addPlayer = async (name: string) => {
     return response.data;
   } catch (error) {
     console.error("Failed to add player", error);
+    throw error;
+  }
+};
+
+//Games
+
+export const createGame = async (playerId: string) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/Game`,
+      JSON.stringify(playerId),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error creating game", error);
     throw error;
   }
 };

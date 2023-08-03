@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import CreateGame from "./game/createGame";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
@@ -42,9 +43,7 @@ const NavBar: React.FC = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#!">
-                Create Game
-              </a>
+              <CreateGame />
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" href="#!">
