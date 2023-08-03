@@ -44,7 +44,7 @@ export const fetchGames = async () => {
   }
 };
 
-export const createGame = async (playerId: string) => {
+export const addGame = async (playerId: string) => {
   try {
     const response = await axios.post(
       `${API_URL}/Game`,
