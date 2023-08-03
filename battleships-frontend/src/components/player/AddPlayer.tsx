@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { addPlayer } from "../../services/apiServices";
 
-const AddPlayer: React.FC = () => {
+interface AddPlayerProps {
+  onPlayerAdded: () => void;
+}
+
+const AddPlayer: React.FC<AddPlayerProps> = ({ onPlayerAdded }) => {
   const [playerName, setPlayerName] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -11,6 +15,7 @@ const AddPlayer: React.FC = () => {
       const newPlayerId = await addPlayer(playerName);
       console.log("New player ID:", newPlayerId);
       setPlayerName("");
+      onPlayerAdded();
     } catch (error) {
       console.error("Failed to add player", error);
     }

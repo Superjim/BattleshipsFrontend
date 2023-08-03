@@ -61,3 +61,21 @@ export const addGame = async (playerId: string) => {
     throw error;
   }
 };
+
+export const addPlayerToGame = async (playerId: string, gameId: string) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/Game/${gameId}/join`,
+      JSON.stringify(playerId),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to join game", error);
+    throw error;
+  }
+};

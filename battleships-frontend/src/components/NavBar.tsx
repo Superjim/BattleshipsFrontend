@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import CreateGame from "./game/CreateGame";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
@@ -41,9 +40,6 @@ const NavBar: React.FC = () => {
               <a className="nav-link disabled" aria-current="page" href="#!">
                 Home
               </a>
-            </li>
-            <li className="nav-item">
-              <CreateGame />
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" href="#!">
