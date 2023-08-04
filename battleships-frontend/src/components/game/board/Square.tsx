@@ -1,7 +1,6 @@
 import React from "react";
 import { playTurn } from "../../../services/apiServices";
 
-// Define interfaces and types
 interface IProps {
   status: "default" | "miss" | "hit" | "ship";
   row: number;
