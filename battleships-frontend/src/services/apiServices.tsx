@@ -79,3 +79,25 @@ export const addPlayerToGame = async (playerId: string, gameId: string) => {
     throw error;
   }
 };
+
+export const playTurn = async (
+  gameId: string,
+  playerId: string,
+  target: { row: number; column: number }
+) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/Game/${gameId}/playturn`,
+      { PlayerId: playerId, Target: target },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Failed to play turn", error);
+    throw error;
+  }
+};
