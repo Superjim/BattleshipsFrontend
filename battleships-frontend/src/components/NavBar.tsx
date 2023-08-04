@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
-  const { name } = useAuth();
 
   const handleToggle = () => {
     setNavExpanded(!navExpanded);
@@ -33,24 +32,14 @@ const NavBar: React.FC = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link disabled" aria-current="page" href="#!">
+              <Link className="nav-link disabled" aria-current="page" to="#!">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled" href="#!">
-                My Games
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link disabled"
-                aria-disabled="true"
-                href="#!"
-                style={{ fontWeight: "bold", color: "black" }}
-              >
-                {name}
-              </a>
+              <Link className="nav-link" to="/">
+                Games List
+              </Link>
             </li>
           </ul>
         </div>
