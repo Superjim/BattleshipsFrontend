@@ -44,6 +44,16 @@ export const fetchGames = async () => {
   }
 };
 
+export const fetchGameById = async (gameId: string) => {
+  try {
+    const response = await axios.get(`${API_URL}/Game/${gameId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch game with id ${gameId}`, error);
+    throw error;
+  }
+};
+
 export const addGame = async (playerId: string) => {
   try {
     const response = await axios.post(
@@ -95,7 +105,12 @@ export const playTurn = async (
         },
       }
     );
-    return response.data;
+    //if good response
+    if (response.status >= 200 && response.status < 300) {
+      return response.data;
+    } else {
+      throw new Error(response.data);
+    }
   } catch (error) {
     console.error("Failed to play turn", error);
     throw error;

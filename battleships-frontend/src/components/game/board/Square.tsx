@@ -1,76 +1,54 @@
 import React from "react";
-import { playTurn } from "../../../services/apiServices";
 
 interface IProps {
-  status: "default" | "miss" | "hit" | "ship";
+  status: "Default" | "Miss" | "Hit" | "Ship";
   row: number;
   column: number;
-  type: "hero" | "enemy";
-  gameId: string;
-  playerId: string;
+  boardType: "hero" | "enemy";
+  onClickSquare: (row: number, column: number) => void;
+  squareSize: number;
 }
-
-type ColoursMap = {
-  [key in "default" | "miss" | "hit" | "ship"]: string;
-};
-
-const colours: ColoursMap = {
-  default: "blue",
-  miss: "blue",
-  hit: "red",
-  ship: "grey",
-};
 
 const Square: React.FC<IProps> = ({
   status,
   row,
   column,
-  type,
-  gameId,
-  playerId,
+  boardType,
+  onClickSquare,
+  squareSize,
 }) => {
-  const colour = colours[status];
+  let colour = "blue";
 
-  const handleClick = async () => {
-    if (type === "enemy") {
-      try {
-        const result = await playTurn(gameId, playerId, { row, column });
-        console.log(result);
-        //add optimistic renderings
-      } catch (error) {
-        console.error(error);
-      }
+  switch (status) {
+    case "Default":
+      colour = "blue";
+      break;
+    case "Miss":
+      colour = "white";
+      break;
+    case "Hit":
+      colour = "red";
+      break;
+    case "Ship":
+      colour = "darkgrey";
+      break;
+  }
+
+  const handleClick = () => {
+    if (boardType === "enemy") {
+      onClickSquare(row, column);
     }
   };
 
-  const overlayCircle = status === "miss";
+  const style = {
+    backgroundColor: colour,
+    width: squareSize,
+    height: squareSize,
+    border: "1px solid black",
+    cursor: "pointer",
+  };
 
-  return (
-    <div
-      onClick={handleClick}
-      style={{
-        backgroundColor: colour,
-        width: "30px",
-        height: "30px",
-        position: "relative",
-      }}
-    >
-      {overlayCircle && (
-        <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "50%",
-            width: "15px",
-            height: "15px",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      )}
-    </div>
-  );
+  return <div style={style} onClick={handleClick}></div>;
 };
 
 export default Square;
