@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 const NavBar: React.FC = () => {
   const [navExpanded, setNavExpanded] = useState(false);
+
+  const { showPlayerList, togglePlayerList } = useAuth(); //dev
 
   const handleToggle = () => {
     setNavExpanded(!navExpanded);
@@ -40,6 +43,12 @@ const NavBar: React.FC = () => {
               <Link className="nav-link" to="/">
                 Games List
               </Link>
+            </li>
+            <li className="nav-item">
+              {/* dev */}
+              <button onClick={togglePlayerList}>
+                {showPlayerList ? "Hide Player List" : "Show Player List"}
+              </button>
             </li>
           </ul>
         </div>
